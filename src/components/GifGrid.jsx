@@ -16,16 +16,25 @@ export const GifGrid = ({ category }) => {
             isLoading && <Spinner />
 
         }
-        <div className="container grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 place-items-center  pb-20">
-            {
+            <div className="container grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 place-items-center pb-20">
+                {gifs.length !== 0 
+                ?
                 gifs.map(gif => (
                     <GifItem
                         key={gif.id}
                         { ...gif }
                     />
                 ))
-            }
-        </div>
+                :
+                <div className="max-w-sm border-4 border-violet-600 mx-auto my-5 rounded-xl order-2">
+                    <p
+                        className="text-center text-white text-xl font-semibold p-4"
+                    >
+                        No se encontraron gifs con esta categoría
+                    </p>
+                </div>
+                }
+            </div>
     </div>
   )
 }
